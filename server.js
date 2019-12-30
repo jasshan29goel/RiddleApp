@@ -11,6 +11,9 @@ const app = express();
 // DB Config
 connectDB();
 
+// Init middleware
+app.use(express.json({extended : false}));
+
 
 // Use Routes
 app.use('/api/users', users);

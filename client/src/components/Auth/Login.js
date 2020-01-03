@@ -1,6 +1,12 @@
+
 import React, { useState } from 'react';
+import { Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { login } from '../../actions/auth';
 import FormElement from '../Layout/FormElement';
-const Login = () => {
+
+const Login = ({login,isAuthenticated}) => {
     const [formData, setFormData] = useState({
         email: '',
         password: ''
@@ -13,9 +19,11 @@ const Login = () => {
     
       const onSubmit = e => {
         e.preventDefault();
-        console.log(formData);
+        login(email, password);
     };
-    
+    if (isAuthenticated) {
+        return <Redirect to='/dashboard' />;
+      };
     return (
         <div className="container card mb-3 ">
         <div className="card-header">Login
@@ -35,4 +43,14 @@ const Login = () => {
     )
 };
 
-export default Login;
+
+Login.propTypes = {
+    login: PropTypes.func.isRequired,
+  };
+const mapStateToProps = state => ({
+  isAuthenticated: state.auth.isAuthenticated
+});
+export default connect(
+    mapStateToProps,
+    { login }
+)(Login);

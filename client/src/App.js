@@ -1,4 +1,4 @@
-import React ,{Fragment} from 'react';
+import React ,{Fragment,useEffect} from 'react';
 import {BrowserRouter as Router ,Route,Switch} from 'react-router-dom';
 import './App.css';
 import Navbar from './components/Layout/Navbar';
@@ -7,8 +7,23 @@ import Login from './components/Auth/Login';
 import Register from './components/Auth/Register';
 import 'bootstrap/dist/css/bootstrap.min.css'; 
 
-const App = () => (
+// Redux
+import { Provider } from 'react-redux';
+import store from './store';
+import { loadUser } from './actions/auth';
+import setAuthToken from './utils/setAuthToken';
 
+if (localStorage.token) {
+  setAuthToken(localStorage.token);
+}
+
+const App = () => {
+  useEffect(() => {
+    store.dispatch(loadUser());
+  }, []);
+
+ return(
+<Provider store={store}>
 <Router>
     <Fragment>
       <Navbar/>
@@ -22,7 +37,7 @@ const App = () => (
     </section>
      </Fragment>
     </Router>
-
-);
+</Provider>
+)};
 
 export default App;

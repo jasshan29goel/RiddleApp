@@ -1,7 +1,12 @@
-import React ,{useState } from 'react';
+import React, {  useState } from 'react';
+import { connect } from 'react-redux';
+import {  Redirect } from 'react-router-dom';
+import { register } from '../../actions/auth';
+import PropTypes from 'prop-types';
 import FormElement from '../Layout/FormElement';
 
-const Register = () => {
+
+const Register = ({ register ,isAuthenticated}) => {
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -18,9 +23,13 @@ const Register = () => {
         if (password !== password2) {
             console.log("password does not match");
         } else {
-            console.log(formData);
+            register({ name, email, password });
         }
       };
+
+  if (isAuthenticated) {
+    return <Redirect to='/dashboard' />;
+  }
     return (
         <div className="container card mb-3 ">
         <div className="card-header">Register
@@ -41,4 +50,16 @@ const Register = () => {
     </div>
     )
 };
-export default Register;
+Register.propTypes = {
+  register: PropTypes.func.isRequired,
+ isAuthenticated: PropTypes.bool
+};
+
+const mapStateToProps = state => ({
+  isAuthenticated: state.auth.isAuthenticated
+});
+
+export default connect(
+  mapStateToProps,
+  {  register }
+)(Register);

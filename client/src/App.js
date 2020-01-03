@@ -5,6 +5,8 @@ import Navbar from './components/Layout/Navbar';
 import Landing from './components/Layout/Landing';
 import Login from './components/Auth/Login';
 import Register from './components/Auth/Register';
+import Questions from './components/Questions/Questions';
+import PrivateRoute from './components/routing/PrivateRoute';
 import 'bootstrap/dist/css/bootstrap.min.css'; 
 
 // Redux
@@ -32,6 +34,7 @@ const App = () => {
         <Switch>
       <Route exact path="/register" component={Register}/>
       <Route exact path="/login" component={Login}/>
+      <PrivateRoute exact path="/questions" component={Questions}/>
           
        </Switch> 
     </section>

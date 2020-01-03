@@ -4,8 +4,21 @@ import { connect } from 'react-redux';
 import { logout } from '../../actions/auth';
 import PropTypes from 'prop-types';
 
-const Navbar = ({logout}) => {
-
+const Navbar = ({logout,auth}) => {
+  const authLinks = (
+    <ul className="navbar-nav mr-auto">
+      <li className="nav-item">
+      <Link className="nav-link" to="/questions"  >
+      Questions     
+      </Link>                         
+      </li>
+      <li>
+      <Link className="nav-link" to="/"  onClick={logout}>
+      Logout     
+      </Link>                         
+      </li>
+    </ul>
+    );
     return (
       <nav className="navbar navbar-expand-sm navbar-dark bg-success mb-3 py-0">
       <div className="container">
@@ -13,18 +26,9 @@ const Navbar = ({logout}) => {
           Riddler
         </Link >
         <div>
-          <ul className="navbar-nav mr-auto">
-            <li className="nav-item">
-              <Link to="/" className="nav-link">
-              <i className="fas fa-question" />   About     
-              </Link>  
-              </li>
-              <li className="nav-item">
-              <a className="nav-link" href="/"  onClick={logout}>
-              Logout     
-              </a>                         
-              </li>
-          </ul>
+
+        {auth.isAuthenticated && authLinks}
+
         </div>
       </div>
     </nav>
@@ -32,9 +36,13 @@ const Navbar = ({logout}) => {
 };
 Navbar.propTypes = {
   logout: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired
 };
+const mapStateToProps = state => ({
+  auth: state.auth
+});
 
 export default connect(
-  null,
+  mapStateToProps,
   {  logout }
 )(Navbar);

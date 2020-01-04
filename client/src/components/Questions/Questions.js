@@ -5,6 +5,7 @@ import { getQuestions } from '../../actions/question';
 
 
 import QuestionElement from "../Layout/QuestionElement"
+import QuestionForm from "../Layout/QuestionForm"
 
 const Questions = ({ getQuestions, question: { questions, loading },auth}) => {
     useEffect(() => {
@@ -13,8 +14,9 @@ const Questions = ({ getQuestions, question: { questions, loading },auth}) => {
 
     return !loading && (
         <div>
+         <QuestionForm/> 
         {questions.map(question => (
-          <QuestionElement name={question.name} date={question.date} text={question.text} trash={ !auth.loading && auth.isAuthenticated && question.user===auth.user._id} id={question._id} />
+          <QuestionElement name={question.name} date={question.date} text={question.text} trash={ !auth.loading && auth.isAuthenticated && question.user===auth.user._id} id={question._id} len={question.answers.length}/>
         ))}
         </div>
     )

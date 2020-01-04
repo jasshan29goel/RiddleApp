@@ -7,7 +7,11 @@ export const LOGIN_FAIL = 'LOGIN_FAIL';
 export const LOGOUT = 'LOGOUT';
 
 export const GET_QUESTIONS = 'GET_QUESTIONS';
+export const GET_QUESTION = 'GET_QUESTION';
 export const QUESTIONS_ERROR = 'QUESTIONS_ERROR';
 
 export const DELETE_QUESTION = 'DELETE_QUESTION';
+export const ADD_QUESTION = 'ADD_QUESTION';
+
+export const ADD_ANSWER = 'ADD_ANSWER';
  

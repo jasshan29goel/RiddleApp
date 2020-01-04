@@ -1,7 +1,10 @@
 import {
     GET_QUESTIONS,
     QUESTIONS_ERROR,
-    DELETE_QUESTION
+    DELETE_QUESTION,
+    ADD_QUESTION,
+    GET_QUESTION,
+    ADD_ANSWER
 } from '../actions/types';
   
 const initialState = {
@@ -19,6 +22,24 @@ export default function(state = initialState, action) {
         return {
             ...state,
             questions: payload,
+            loading: false
+        };
+        case GET_QUESTION:
+        return {
+            ...state,
+            question: payload,
+            loading: false
+        };
+        case ADD_QUESTION:
+        return {
+            ...state,
+            questions: [payload, ...state.questions],
+            loading: false
+        };
+        case ADD_ANSWER:
+        return {
+            ...state,
+            question: {...state.question,answers : payload},
             loading: false
         };
         case DELETE_QUESTION:

@@ -1,13 +1,14 @@
 import React ,{Fragment,useEffect} from 'react';
 import {BrowserRouter as Router ,Route,Switch} from 'react-router-dom';
-import './App.css';
 import Navbar from './components/Layout/Navbar';
 import Landing from './components/Layout/Landing';
 import Login from './components/Auth/Login';
 import Register from './components/Auth/Register';
 import Questions from './components/Questions/Questions';
+import SingleQuestion from './components/Question/SingleQuestion';
 import PrivateRoute from './components/routing/PrivateRoute';
 import 'bootstrap/dist/css/bootstrap.min.css'; 
+import './App.css';
 
 // Redux
 import { Provider } from 'react-redux';
@@ -35,7 +36,8 @@ const App = () => {
       <Route exact path="/register" component={Register}/>
       <Route exact path="/login" component={Login}/>
       <PrivateRoute exact path="/questions" component={Questions}/>
-          
+      <PrivateRoute exact path='/questions/:id' component={SingleQuestion} />
+   
        </Switch> 
     </section>
      </Fragment>

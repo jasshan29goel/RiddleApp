@@ -8,4 +8,6 @@ export const LOGOUT = 'LOGOUT';
 
 export const GET_QUESTIONS = 'GET_QUESTIONS';
 export const QUESTIONS_ERROR = 'QUESTIONS_ERROR';
+
+export const DELETE_QUESTION = 'DELETE_QUESTION';
  

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const Landing = () => {
     return (
 
-              <div className="jumbotron text-center  " >
+              <div className="text-center  " >
                 <h1>Launch your awesome startup now!</h1>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto provident qui tempore natus quos quibusdam soluta at.</p>
                 <p>

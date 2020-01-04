@@ -14,7 +14,7 @@ const Questions = ({ getQuestions, question: { questions, loading },auth}) => {
     return !loading && (
         <div>
         {questions.map(question => (
-          <QuestionElement name={question.name} date={question.date} text={question.text} trash={ !auth.loading && auth.isAuthenticated && question.user===auth.user._id} />
+          <QuestionElement name={question.name} date={question.date} text={question.text} trash={ !auth.loading && auth.isAuthenticated && question.user===auth.user._id} id={question._id} />
         ))}
         </div>
     )

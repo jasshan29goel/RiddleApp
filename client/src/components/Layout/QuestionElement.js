@@ -1,15 +1,22 @@
 import React from 'react';
 import Moment from 'react-moment';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { deleteQuestion } from '../../actions/question';
 
 const QuestionElement = (props) => {
-    const {name,date,text,trash} = props
+    const {deleteQuestion,name,date,text,trash,id} = props
     return (
         <div className="card mb-3">
         <div className="card-header">
             <h5>{name}
-                {trash && (<i
+                {trash && (
+                <button className="btn btn-light btn-lg" onClick={e=>deleteQuestion(id)} style={{ cursor: 'pointer', float: 'right', color: 'red' }}>
+                <i
                 className="fa fa-trash"
-                style={{ cursor: 'pointer', float: 'right', color: 'red' }}/>)}
+                />
+                </button>
+                )}
             </h5>
         </div>
         <div className="card-body">
@@ -23,4 +30,13 @@ const QuestionElement = (props) => {
     </div>
     )
 };
-export default QuestionElement;
+
+QuestionElement.propTypes = {
+    deleteQuestion: PropTypes.func.isRequired
+  };
+  
+  
+  export default connect(
+    null,
+    { deleteQuestion }
+  )(QuestionElement);

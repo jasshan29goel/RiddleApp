@@ -1,19 +1,28 @@
-import React from 'react'
+import React ,{Fragment} from 'react'
 import { Link } from 'react-router-dom';
 
 const Landing = () => {
     return (
-
-              <div className="text-center  " >
-                <h1>Launch your awesome startup now!</h1>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto provident qui tempore natus quos quibusdam soluta at.</p>
+      <Fragment>
+              <div className=" text-center " >
+                <h1>Welcome to the RiddleApp</h1>
+                <p>Get the best questions for training your brain</p>
+                <p>Happy Thinking</p>
                 <p>
                   
-                  <Link to="/login" className="btn btn-success btn-ghost btn-lg mr-2" role="button">Login</Link>
-                  <Link to="/register" className="btn btn-success btn-ghost btn-lg " role="button">Register</Link>
+                  <Link to="/login" className="btn btn-success btn-ghost btn-lg mr-2" role="button">
+                    <i className="fa fa-sign-in-alt" />
+                      {' '}Login
+                    </Link>
+                  <Link to="/register" className="btn btn-success btn-ghost btn-lg " role="button">
+                  <i className="fa fa-user-plus" />
+                      {' '}Register
+                    
+                    </Link>
                 </p>
     
               </div>
+      </Fragment>
     )
 };
 export default Landing;

@@ -1,6 +1,6 @@
 
-import React, { useState } from 'react';
-import { Redirect } from 'react-router-dom';
+import React, { useState, Fragment } from 'react';
+import { Redirect,Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { login } from '../../actions/auth';
@@ -25,13 +25,14 @@ const Login = ({login,isAuthenticated}) => {
         return <Redirect to='/questions' />;
       };
     return (
-        <div className="container card mb-3 ">
+      <Fragment> 
+           <div className="container card mb-3 ">
         <div className="card-header">Login
         </div>
         <div className="card-body">
             <form onSubmit={e => onSubmit(e)}>
             <FormElement label="Email"  name="email" placeholder="Enter Email" type="text" value={email} onChange={e => onChange(e)}/>
-            <FormElement label="Password"  name="password" placeholder="Enter Password" type="text" value={password} onChange={e => onChange(e)}/>
+            <FormElement label="Password"  name="password" placeholder="Enter Password" type="password" value={password} onChange={e => onChange(e)}/>
             <input
                 type="submit"
                 value="Login"
@@ -40,7 +41,11 @@ const Login = ({login,isAuthenticated}) => {
             </form> 
         </div>
     </div>
-    )
+      <small className="text-muted">
+      Not Registered ? <Link to="/register"> Register here</Link>
+      </small>
+    </Fragment>
+)
 };
 
 

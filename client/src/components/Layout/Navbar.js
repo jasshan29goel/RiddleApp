@@ -9,11 +9,15 @@ const Navbar = ({logout,auth}) => {
     <ul className="navbar-nav mr-auto">
       <li className="nav-item">
       <Link className="nav-link" to="/questions"  >
+      <i className="fa fa-question"/>{' '}
+
       Questions     
       </Link>                         
       </li>
       <li>
       <Link className="nav-link" to="/"  onClick={logout}>
+      <i className="fa fa-sign-out-alt"/>{' '}
+
       Logout     
       </Link>                         
       </li>
@@ -23,7 +27,8 @@ const Navbar = ({logout,auth}) => {
       <nav className="navbar navbar-expand-sm navbar-dark bg-success mb-3 py-0">
       <div className="container">
         <Link to="/" className="navbar-brand">
-          Riddler
+        <i className="fa fa-cogs"/>{' '}
+          RiddleApp
         </Link >
         <div>
 

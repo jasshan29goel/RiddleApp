@@ -1,4 +1,4 @@
-import React ,{Fragment,useEffect} from 'react';
+import React ,{Fragment,useEffect,useState} from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getQuestion } from '../../actions/question';
@@ -11,6 +11,11 @@ const SingleQuestion = ({question : {question , loading},getQuestion,match}) => 
         getQuestion(match.params.id);
     }, [getQuestion]);
     
+    const [formData, setFormData] = useState({
+        accesible: false
+      });
+    const { accesible } = formData;
+
     return !loading && question !== null && (
         <Fragment>
         <div className="card mb-3">
@@ -26,7 +31,20 @@ const SingleQuestion = ({question : {question , loading},getQuestion,match}) => 
         </div>
     </div>
     <AnswerForm id={match.params.id}/>
-    {question.answers.map(answer => (
+    <button  type='submit' className="btn btn-success mt-2 mb-2 pl-3 pr-3"  onClick={() =>
+                    setFormData({
+                      accesible: !accesible
+                    })
+                  } 
+                  >
+                    View Answers
+                    {' '}
+            {question.answers.length > 0 && (
+<span className='answer-count'>{question.answers.length} { accesible ?(<i class="fas fa-sort-up"/>) :(<i class="fas fa-sort-down"/>)  }
+              </span>
+            )}
+                  </button>
+    {accesible && question.answers.map(answer => (
           <AnswerElement key={answer._id}  name={answer.name} text={answer.text} date={answer.date} />
         ))}
     </Fragment>

@@ -6,7 +6,7 @@ import { deleteQuestion } from '../../actions/question';
 import { Link } from 'react-router-dom';
 
 const QuestionElement = (props) => {
-    const {deleteQuestion,name,date,text,trash,id,len} = props
+    const {deleteQuestion,name,date,text,trash,id} = props
     return (
         <div className="card mb-3">
         <div className="card-header">
@@ -24,11 +24,8 @@ const QuestionElement = (props) => {
             <p className="card-text">{text}</p>
         </div>
         <div className="card-body">
-            <Link to={`/questions/${id}`} className="btn btn-primary btn-sm">View Answers 
-            {' '}
-            {len > 0 && (
-              <span className='answer-count'>{len}</span>
-            )}
+            <Link to={`/questions/${id}`} className="btn btn-primary btn-sm">Add Answer 
+
             </Link>
             <p className="card-text text-muted" style={{ float: 'right' }}  > <small> Posted on <Moment parse="YYYY-MM-DD" format="YYYY/MM/DD"> {date}
             </Moment> </small></p>

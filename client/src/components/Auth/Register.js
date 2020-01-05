@@ -1,6 +1,6 @@
-import React, {  useState } from 'react';
+import React, {  useState, Fragment } from 'react';
 import { connect } from 'react-redux';
-import {  Redirect } from 'react-router-dom';
+import {  Redirect,Link } from 'react-router-dom';
 import { register } from '../../actions/auth';
 import PropTypes from 'prop-types';
 import FormElement from '../Layout/FormElement';
@@ -31,15 +31,16 @@ const Register = ({ register ,isAuthenticated}) => {
     return <Redirect to='/questions' />;
   }
     return (
-        <div className="container card mb-3 ">
+<Fragment>
+<div className="container card mb-3 ">
         <div className="card-header">Register
         </div>
         <div className="card-body">
             <form onSubmit={e => onSubmit(e)}>
             <FormElement label="Name"  name="name" placeholder="Enter Name" type="text" value={name} onChange={e => onChange(e)}/>
             <FormElement label="Email"  name="email" placeholder="Enter Email" type="text" value={email} onChange={e => onChange(e)}/>
-            <FormElement label="Password"  name="password" placeholder="Enter Password" type="text" value={password} onChange={e => onChange(e)}/>
-            <FormElement label="Confirm Password"  name="password2" placeholder="Re-enter Password" type="text" value={password2} onChange={e => onChange(e)}/>
+            <FormElement label="Password"  name="password" placeholder="Enter Password (Min 6 characters)" type="password" value={password} onChange={e => onChange(e)}/>
+            <FormElement label="Confirm Password"  name="password2" placeholder="Re-enter Password" type="password" value={password2} onChange={e => onChange(e)}/>
             <input
                 type="submit"
                 value="Register"
@@ -47,7 +48,13 @@ const Register = ({ register ,isAuthenticated}) => {
                 />
             </form> 
         </div>
-    </div>
+
+      </div>
+            <small className="text-muted">
+            Already Registered ? <Link to="/login"> login here</Link>
+            </small>
+          </Fragment>
+      
     )
 };
 Register.propTypes = {

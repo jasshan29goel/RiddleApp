@@ -7,7 +7,7 @@ const AnswerForm = ({ addAnswer,id }) => {
   const [text, setText] = useState('');
 
   return (
- <div class="form-group ">
+ <div className="form-group ">
   <form  
   onSubmit={e => {
           e.preventDefault();
@@ -15,10 +15,10 @@ const AnswerForm = ({ addAnswer,id }) => {
           setText('');
         }}
       >
-    <textarea class="form-control"  rows="3" placeholder="Answer the Question"
+    <textarea className="form-control"  rows="3" placeholder="Answer the Question"
      value={text} onChange={e => setText(e.target.value)} required
      ></textarea>
-    <input  type='submit' class="btn btn-success mt-2 mb-2 pl-3 pr-3" value='Answer' />
+    <input  type='submit' className="btn btn-success mt-2 mb-2 pl-3 pr-3" value='Answer' />
   </form>
 
 </div>

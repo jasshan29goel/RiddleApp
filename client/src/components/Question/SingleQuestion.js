@@ -27,7 +27,7 @@ const SingleQuestion = ({question : {question , loading},getQuestion,match}) => 
     </div>
     <AnswerForm id={match.params.id}/>
     {question.answers.map(answer => (
-          <AnswerElement name={answer.name} text={answer.text} date={answer.date} />
+          <AnswerElement key={answer._id}  name={answer.name} text={answer.text} date={answer.date} />
         ))}
     </Fragment>
     )

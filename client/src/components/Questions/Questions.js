@@ -16,7 +16,7 @@ const Questions = ({ getQuestions, question: { questions, loading },auth}) => {
         <div>
          <QuestionForm/> 
         {questions.map(question => (
-          <QuestionElement name={question.name} date={question.date} text={question.text} trash={ !auth.loading && auth.isAuthenticated && question.user===auth.user._id} id={question._id} len={question.answers.length}/>
+          <QuestionElement name={question.name} date={question.date} text={question.text} trash={ !auth.loading && auth.isAuthenticated && question.user===auth.user._id} id={question._id} key={question._id} len={question.answers.length}/>
         ))}
         </div>
     )
